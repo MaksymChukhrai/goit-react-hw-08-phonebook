@@ -1,11 +1,11 @@
 import React from "react";
 
-const HomePage = () => {
+const Loader = () => {
     return (
         <div>
-            HomePage
+  Loader
         </div>
     );
 }
 
-export default HomePage;
+export default Loader;
