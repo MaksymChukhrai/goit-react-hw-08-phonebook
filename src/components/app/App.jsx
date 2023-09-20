@@ -3,6 +3,7 @@ import { lazy, Suspense  } from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Loader from '../Loader'
 
+
 const HomePage = lazy(() => import('../../pages/home/HomePage'));
 const RegisterPage = lazy(() => import('../../pages/register/RegisterPage'));
 const LoginPage = lazy(() => import('../../pages/login/LoginPage'));
@@ -23,7 +24,7 @@ const App = () => {
       </header>
       <main>
           <Suspense fallback={<Loader/>}>
-            <Routes>
+          <Routes>
               <Route path ="/" element={<HomePage/>}/>
               <Route path ="/contacts" element={<ContactsPage/>}/>
               <Route path ="/login" element={<LoginPage/>}/>

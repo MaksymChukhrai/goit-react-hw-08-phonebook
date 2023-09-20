@@ -44,7 +44,7 @@ const handleSubmit = event => {
                     <input name ="userPassword" type="password" required minLength={7}/>
                 </label>
                 <br/> <br/> 
-                 <button type ="submit" >Sign In</button>
+                 <button type ="submit" >Sign Up</button>
             </form>
         </div>
     );
