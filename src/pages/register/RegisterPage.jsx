@@ -1,11 +1,14 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { registerUserThunk } from "redux/operations";
+import { selectAuthentificated } from 'redux/authReducer';
+import { Navigate } from 'react-router-dom';
 
 const RegisterPage = () => {
 
 
     const dispatch = useDispatch();
+    const authentificated = useSelector(selectAuthentificated);
 
 const handleSubmit = event => {
     event.preventDefault();
@@ -24,7 +27,7 @@ const handleSubmit = event => {
     })  
  );
 };
-
+if (authentificated) return <Navigate to="/contacts"/>;
     return (
         <div>
             <h1>Register your account</h1>
