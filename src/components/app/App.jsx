@@ -1,7 +1,7 @@
 import StyledNavLink from './App.styled'
 import { lazy, Suspense ,useEffect } from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Loader from '../Loader'
+import Loader from '../Loader/Loader'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthentificated, selectToken } from 'redux/authReducer';
 import { logoutUserThunk, refreshUserThunk } from 'redux/operations';
