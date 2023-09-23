@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button } from 'antd';
+// import { Button } from 'antd';
 
 import Loader from 'components/Loader/Loader';
 import { selectAuthentificated } from 'redux/authReducer';
