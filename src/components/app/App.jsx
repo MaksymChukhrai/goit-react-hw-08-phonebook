@@ -4,8 +4,10 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Loader from '../Loader/Loader'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthentificated, selectToken } from 'redux/authReducer';
-import { logoutUserThunk, refreshUserThunk } from 'redux/operations';
+import {  refreshUserThunk } from 'redux/operations';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
+// import { selectUserData } from 'redux/authReducer';
+import UserMenu from '../userMenu/UserMenu';
 
 
 const HomePage = lazy(() => import('../../pages/home/HomePage'));
@@ -13,10 +15,14 @@ const RegisterPage = lazy(() => import('../../pages/register/RegisterPage'));
 const LoginPage = lazy(() => import('../../pages/login/LoginPage'));
 const ContactsPage = lazy(() => import('../../pages/contacts/ContactsPage'));
 
+
+
+
 export const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const authentificated = useSelector(selectAuthentificated);
+  // const userData = useSelector(selectUserData);
 
   useEffect(() => {
     if (!token || authentificated) return;
@@ -24,9 +30,9 @@ export const App = () => {
     dispatch(refreshUserThunk());
   }, [token, dispatch, authentificated]);
 
-  const handleLogOut = () => {
-    dispatch(logoutUserThunk());
-  };
+  // const handleLogOut = () => {
+  //   dispatch(logoutUserThunk());
+  // };
 
   return (
     <Router>
@@ -37,7 +43,8 @@ export const App = () => {
           {authentificated ? (
             <>
               <StyledNavLink to="/contacts">Contacts</StyledNavLink>
-              <button onClick={handleLogOut}>Log Out</button>
+              <UserMenu />
+              {/* <button onClick={handleLogOut}>Log Out</button> */}
             </>
           ) : (
             <>

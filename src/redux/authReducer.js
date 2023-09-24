@@ -7,6 +7,7 @@ const initialState = {
   userData: null,
   token: null,
   authentificated: false,
+  userEmail: '',
 };
 
 const authSlice = createSlice({
@@ -18,12 +19,14 @@ const authSlice = createSlice({
         state.isLoading = true;
         state.error = null;
         state.authentificated = false;
+        
       })
       .addCase(registerUserThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.authentificated = true;
         state.userData = action.payload.user;
         state.token = action.payload.token;
+        state.userEmail = action.payload.user.email; // Обновите адрес электронной почты
       })
       .addCase(registerUserThunk.rejected, (state, action) => {
         state.isLoading = false;
@@ -39,6 +42,7 @@ const authSlice = createSlice({
         state.authentificated = true;
         state.userData = action.payload.user;
         state.token = action.payload.token;
+        state.userEmail = action.payload.user.email; // Обновите адрес электронной почты
       })
       .addCase(loginUserThunk.rejected, (state, action) => {
         state.isLoading = false;
@@ -57,6 +61,7 @@ const authSlice = createSlice({
       .addCase(refreshUserThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+        state.userEmail = action.payload.user.email; // Обновите адрес электронной почты
       })
       // ----- LOGOUT -----
       .addCase(logoutUserThunk.pending, state => {
@@ -80,5 +85,5 @@ export const selectUserError = (state) =>state.auth.error;
 export const selectToken = (state) =>state.auth.token;
 export const selectUserData = (state) =>state.auth.userData;
 export const selectAuthentificated = (state) =>state.auth.authentificated;
-
+export const selectUserEmail = (state) => state.auth.userData.email;
 export const authReducer = authSlice.reducer;

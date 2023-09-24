@@ -77,3 +77,16 @@ export const logoutUserThunk = createAsyncThunk(
     }
   }
 );
+
+// export const updateContactThunk = createAsyncThunk(
+//   'contacts/updateContact',
+//   async ({ contactId, updatedData }, thunkApi) => {
+//     try {
+//       const { data } = await $instance.put(`/contacts/{contactId}`, updatedData);
+
+//       return data;
+//     } catch (error) {
+//       return thunkApi.rejectWithValue(error.message);
+//     }
+//   }
+// );

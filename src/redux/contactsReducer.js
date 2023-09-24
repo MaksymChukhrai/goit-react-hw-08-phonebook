@@ -40,6 +40,21 @@ export const deleteContactThunk = createAsyncThunk(
   }
 );
 
+export const updateContactThunk = createAsyncThunk(
+  'contacts/updateContact',
+  async ({ contactId, updatedData }, thunkApi) => {
+    try {
+      console.log('Updating Contact:', { contactId, updatedData }); 
+      const { data } = await $instance.patch(`/contacts/${contactId}`, updatedData);
+
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+
 const initialState = {
   contacts: null,
   isLoading: false,
@@ -95,7 +110,27 @@ const contactsSlice = createSlice({
       .addCase(deleteContactThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      }),
+      })
+      //---------------UPDATE CONTACT------------
+
+      .addCase(updateContactThunk.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(updateContactThunk.fulfilled, (state, action) => {
+        state.isLoading = false;
+        const updatedContact = action.payload;
+        // Найдите контакт в массиве и обновите его
+        const index = state.contacts.findIndex(contact => contact.id === updatedContact.id);
+        if (index !== -1) {
+          state.contacts[index] = updatedContact;
+        }
+      })
+      .addCase(updateContactThunk.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      
 });
 
 export const selectUserContacts = state => state.contacts.contacts;
