@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { $instance } from './operations';
+import { setFilter } from './filtersSlice';
 
 export const requestContactsThunk = createAsyncThunk(
   'contacts/getAll',
@@ -59,6 +60,7 @@ const initialState = {
   contacts: null,
   isLoading: false,
   error: null,
+  filter: '',
 };
 
 const contactsSlice = createSlice({
@@ -129,6 +131,9 @@ const contactsSlice = createSlice({
       .addCase(updateContactThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+      .addCase(setFilter, (state, action) => {
+        state.filter = action.payload;
       })
       
 });

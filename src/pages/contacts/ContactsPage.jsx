@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'; 
 import { useDispatch, useSelector } from 'react-redux';
-// import { Button } from 'antd';
-
+import Filter from '../../components/filterContacts/Filter';
 import Loader from 'components/Loader/Loader';
 import { selectAuthentificated } from 'redux/authReducer';
 import {
@@ -11,23 +10,25 @@ import {
   selectContactsError,
   selectContactsIsLoading,
   selectUserContacts,
-  updateContactThunk, // Импортируйте экшен для обновления контакта
+  updateContactThunk,
 } from 'redux/contactsReducer';
+import  {selectFilter}  from '../../redux/filtersSlice'; // Импорт селектора фильтра
 import { StyledSubmitBtn } from './ContactsStyled';
 
 const Contacts = () => {
-  const [editingContact, setEditingContact] = useState(null); // Локальное состояние для редактирования контакта
+  const [editingContact, setEditingContact] = useState(null);
   const [updatedContact, setUpdatedContact] = useState({ name: '', number: '' });
 
   const authentificated = useSelector(selectAuthentificated);
   const contacts = useSelector(selectUserContacts);
   const isLoading = useSelector(selectContactsIsLoading);
   const error = useSelector(selectContactsError);
+  const filter = useSelector(selectFilter); // Получение значения фильтра из Redux
+  // const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (!authentificated) return;
-
     dispatch(requestContactsThunk());
   }, [authentificated, dispatch]);
 
@@ -37,9 +38,7 @@ const Contacts = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-
     const form = event.currentTarget;
-
     const name = form.elements.contactName.value;
     const number = form.elements.contactNumber.value;
 
@@ -48,8 +47,9 @@ const Contacts = () => {
 
     dispatch(addContactThunk({ name, number }));
   };
+
   const handleEditContact = (contact) => {
-    setEditingContact(contact); // Устанавливаем контакт для редактирования
+    setEditingContact(contact);
     setUpdatedContact({
       name: contact.name,
       number: contact.number,
@@ -57,28 +57,22 @@ const Contacts = () => {
   };
 
   const handleSaveChanges = () => {
-    // Отправляем обновленные данные контакта на сервер
     if (editingContact) {
-      console.log("Save changes button clicked");
-      const { id, name, number } = editingContact;
-      console.log('Updated Contact Data:', { id, name, number });
+      const { id} = editingContact;
       dispatch(updateContactThunk({ contactId: id, updatedData: { ...updatedContact } }));
-
-      setEditingContact(null); // Очищаем состояние редактирования
+      setEditingContact(null);
     }
   };
-  
-
-
-  // const handleUpdateContact = (contactId, updatedData) => {
-  //   // В updatedData должны быть новые данные для контакта, например, новое имя или номер
-  //   dispatch(updateContactThunk({ id: contactId, ...updatedData }));
-  // };
-
 
   const showContacts = Array.isArray(contacts) && contacts.length > 0;
+
+  const filteredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
+  
   return (
     <section>
+      <h1>Phonebook</h1>
       <form onSubmit={handleSubmit}>
         <label>
           <p>Name:</p>
@@ -92,12 +86,13 @@ const Contacts = () => {
         <br /><br />
         <StyledSubmitBtn htmlType="submit">Add contact</StyledSubmitBtn>
       </form>
-
+      <h3>Find contacts by name</h3>
+      <Filter />
       {isLoading && <Loader />}
       {error && <p>Oops, some error occured... {error}</p>}
       <ul>
       {showContacts &&
-  contacts.map((contact) => {
+  filteredContacts.map((contact) => {
     return (
       <li key={contact.id}>
         {editingContact && editingContact.id === contact.id ? (
@@ -109,7 +104,7 @@ const Contacts = () => {
                 name="contactName"
                 type="text"
                 required
-                value={updatedContact.name} // Здесь использовать updatedContact
+                value={updatedContact.name}
                 onChange={(e) =>
                   setUpdatedContact({
                     ...updatedContact,
@@ -125,7 +120,7 @@ const Contacts = () => {
                 name="contactNumber"
                 type="text"
                 required
-                value={updatedContact.number} // Здесь использовать updatedContact
+                value={updatedContact.number}
                 onChange={(e) =>
                   setUpdatedContact({
                     ...updatedContact,
