@@ -15,7 +15,9 @@ import {
 import  {selectFilter}  from '../../redux/filtersSlice'; // Импорт селектора фильтра
 import { StyledSubmitBtn } from './ContactsStyled';
 
+
 const Contacts = () => {
+  console.log("Contacts component rendering");
   const [editingContact, setEditingContact] = useState(null);
   const [updatedContact, setUpdatedContact] = useState({ name: '', number: '' });
 
@@ -29,6 +31,7 @@ const Contacts = () => {
 
   useEffect(() => {
     if (!authentificated) return;
+    console.log("Fetching contacts...");
     dispatch(requestContactsThunk());
   }, [authentificated, dispatch]);
 
@@ -66,10 +69,11 @@ const Contacts = () => {
 
   const showContacts = Array.isArray(contacts) && contacts.length > 0;
 
-  const filteredContacts = contacts.filter(contact =>
+  const filteredContacts = contacts?.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
-  
+     );
+     console.log(filteredContacts)
+
   return (
     <section>
       <h1>Phonebook</h1>
@@ -92,7 +96,7 @@ const Contacts = () => {
       {error && <p>Oops, some error occured... {error}</p>}
       <ul>
       {showContacts &&
-  filteredContacts.map((contact) => {
+  filteredContacts?.map((contact) => {
     return (
       <li key={contact.id}>
         {editingContact && editingContact.id === contact.id ? (

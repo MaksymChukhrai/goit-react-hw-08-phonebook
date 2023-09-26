@@ -7,7 +7,8 @@ const Filter = () => {
   const dispatch = useDispatch();
 
   const handleFilterChange = (e) => {
-    const { value } = e.target;
+    const value = e.target.value;
+    console.log("Filter value changed:", value);
     dispatch(setFilter(value)); // Відправка дії setFilter при зміні значення фільтру
   };
 
