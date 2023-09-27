@@ -88,7 +88,7 @@ const Contacts = () => {
           <input name="contactNumber" type="text" required />
         </label>
         <br /><br />
-        <StyledSubmitBtn htmlType="submit">Add contact</StyledSubmitBtn>
+        <button className="btn_add"  type ="submit" >Add contact</button>
       </form>
       <h3>Find contacts by name</h3>
       <Filter />
