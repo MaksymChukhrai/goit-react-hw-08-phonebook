@@ -16,8 +16,8 @@ const UserMenu = () => {
     <div>
       {userData && (
         <>
-          <p>{userEmail}</p> {/* Отображаем адрес электронной почты */}
-          <button onClick={handleLogout}>Logout</button>
+          <p className='usermail'>Hello {userEmail}</p> {/* Отображаем адрес электронной почты */}
+          <button className='logout_btn_usermenu'onClick={handleLogout}>Logout</button>
         </>
       )}
     </div>

@@ -27,20 +27,20 @@ const authentificated = useSelector(selectAuthentificated);
 
   if (authentificated) return <Navigate to="/contacts"/>;
   return (
-    <div>
-      <h1>Login Into Your Account</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
+    <div className='section_login'>
+      <h1 className='title_login'>Login Into Your Account</h1>
+      <form className="form_login" onSubmit={handleSubmit}>
+        <label className="title_form_login">
           <p>Email:</p>
           <input name="userEmail" type="email" required />
         </label>
         <br />
-        <label>
+        <label className="title_form_login">
           <p>Password:</p>
           <input name="userPassword" type="password" required minLength={7} />
         </label>
         <br />
-        <button type="submit">Sign In</button>
+        <button className="btn_login" type="submit">Sign In</button>
       </form>
     </div>
   );

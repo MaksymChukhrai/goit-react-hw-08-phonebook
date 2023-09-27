@@ -37,8 +37,9 @@ export const App = () => {
   return (
     <Router>
     <div>
-      <header>
-        <nav>
+      <header className="header_app">
+        <nav className='nav_app'>
+          <h1 className='nav_title'>Phonebook</h1>
         <StyledNavLink to="/">Home</StyledNavLink>
           {authentificated ? (
             <>

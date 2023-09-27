@@ -75,15 +75,15 @@ const Contacts = () => {
      console.log(filteredContacts)
 
   return (
-    <section>
-      <h1>Phonebook</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
+    <section className='title_contacts'>
+      <h1 className='title_contacts'>New contact</h1>
+      <form className="form_contacts" onSubmit={handleSubmit}>
+        <label className="title_form_contacts">
           <p>Name:</p>
           <input name="contactName" type="text" required />
         </label>
         <br />
-        <label>
+        <label className="title_form_contacts">
           <p>Number:</p>
           <input name="contactNumber" type="text" required />
         </label>

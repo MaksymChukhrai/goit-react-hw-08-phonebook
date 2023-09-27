@@ -1,0 +1,18 @@
+.header_app{
+    background:linear-gradient(to bottom, #3f98f1, #ffffff);
+
+    align-items: center;
+    border-bottom: 6px  #d1dbe5;
+    box-shadow: rgb(33, 33, 33) 0px 2px 10px 1px;
+}
+.nav_app{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.nav_title{
+    font-size: 40px;
+    line-height: 1.07;
+    color: white;
+    text-transform: uppercase;
+}

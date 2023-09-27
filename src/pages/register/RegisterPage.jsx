@@ -29,25 +29,25 @@ const handleSubmit = event => {
 };
 if (authentificated) return <Navigate to="/contacts"/>;
     return (
-        <div>
-            <h1>Register your account</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
+        <div className="section_register">
+            <h1 className="title_register">Register your account</h1>
+            <form className="form_register" onSubmit={handleSubmit}>
+                <label className="title_form_register">
                     <p>Name:</p>
                     <input name="userName" type="text" required minLength={2}/>
                 </label>
                 <br/>
-                <label>
+                <label className="title_form_register">
                     <p>Email:</p>
                     <input name ="userEmail" type="email" required />
                 </label>
                 <br/>
-                <label>
+                <label className="title_form_register">
                     <p>Password:</p>
                     <input name ="userPassword" type="password" required minLength={7}/>
                 </label>
-                <br/> <br/> 
-                 <button type ="submit" >Sign Up</button>
+                <br/>
+                 <button className="btn_register"  type ="submit" >Sign Up</button>
             </form>
         </div>
     );
