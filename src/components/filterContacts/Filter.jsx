@@ -14,7 +14,7 @@ const Filter = () => {
 
   return (
   
-    <input
+    <input className='filter_input'
       type="text"
       placeholder="Filter contacts"
       value={filter}

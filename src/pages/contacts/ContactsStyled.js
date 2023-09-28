@@ -14,10 +14,12 @@ font-size: 20px;
 line-height: 1.88;
 text-align: center;
 letter-spacing: 0.04em;
-padding: 16px 32px;
-margin-top: 35px;
+padding: 0;
+
+margin-top: 55px;
+margin-bottom:0;
 width: 205px;
-/* height: 70px; */
+height: 40px;
   &:hover {
     background: #466b89;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);

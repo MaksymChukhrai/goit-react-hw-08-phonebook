@@ -19,8 +19,9 @@
 .title_form_login input{
     width: 200px;
     height: 25px;
-    border: double;
-    border-color:  #27557a;
+    border: 3px double;
+    border-color:  #3f98f1;
+
 }
 
 .title_form_login p{
