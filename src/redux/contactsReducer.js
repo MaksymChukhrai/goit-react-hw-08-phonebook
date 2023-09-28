@@ -45,8 +45,11 @@ export const updateContactThunk = createAsyncThunk(
   'contacts/updateContact',
   async ({ contactId, updatedData }, thunkApi) => {
     try {
-      console.log('Updating Contact:', { contactId, updatedData }); 
-      const { data } = await $instance.patch(`/contacts/${contactId}`, updatedData);
+      console.log('Updating Contact:', { contactId, updatedData });
+      const { data } = await $instance.patch(
+        `/contacts/${contactId}`,
+        updatedData
+      );
 
       return data;
     } catch (error) {
@@ -54,7 +57,6 @@ export const updateContactThunk = createAsyncThunk(
     }
   }
 );
-
 
 const initialState = {
   contacts: null,
@@ -123,7 +125,9 @@ const contactsSlice = createSlice({
         state.isLoading = false;
         const updatedContact = action.payload;
         // Найдите контакт в массиве и обновите его
-        const index = state.contacts.findIndex(contact => contact.id === updatedContact.id);
+        const index = state.contacts.findIndex(
+          contact => contact.id === updatedContact.id
+        );
         if (index !== -1) {
           state.contacts[index] = updatedContact;
         }
@@ -134,8 +138,7 @@ const contactsSlice = createSlice({
       })
       .addCase(setFilter, (state, action) => {
         state.filter = action.payload;
-      })
-      
+      }),
 });
 
 export const selectUserContacts = state => state.contacts.contacts;

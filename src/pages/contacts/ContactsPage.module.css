@@ -1,135 +1,132 @@
-.section_contacts{
-    background-image: url(../../img/team-bg.jpg);
-    background-size: cover; /* Чтобы изображение заполнило фон секции */
-    display: flex;
+.section_contacts {
+  background-image: url(../../img/team-bg.jpg);
+  background-size: cover; /* Чтобы изображение заполнило фон секции */
+  display: flex;
   justify-content: center;
   align-items: center;
-    margin: 0;
+  margin: 0;
   flex-direction: column;
 }
-.new_contacts{
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    /* background: #eef2f8; */
-    padding: 50px 160px;
-    margin-top: 40px;
-    border-radius: 3%;
-    border: 3px solid #27557a;
-  
-
+.new_contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background: #eef2f8; */
+  padding: 50px 160px;
+  margin-top: 40px;
+  border-radius: 3%;
+  border: 3px solid #27557a;
 }
 
-.form_contacts{
-    display: flex;
-    flex-direction: column;
+.form_contacts {
+  display: flex;
+  flex-direction: column;
 }
 
-.title_contacts{
-    color: #27557a;
+.title_contacts {
+  color: #27557a;
 }
 
-.title_form_contacts p{
-    font-size: large;
-    font-weight: 700;
-    color: #27557a;
+.title_form_contacts p {
+  font-size: large;
+  font-weight: 700;
+  color: #27557a;
 }
-.title_form_contacts input{
-    width: 250px;
-    height: 25px;
-    border: 3px double;
-    border-color:  #3f98f1;
-
+.title_form_contacts input {
+  width: 250px;
+  height: 25px;
+  border: 3px double;
+  border-color: #3f98f1;
 }
 
+.btn_add {
+  cursor: pointer;
+  background-color: #3f98f1;
+  color: #ffff;
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 
-.btn_add{
-    cursor: pointer;
-    background-color: #3f98f1;
-    color: #ffff;
-    box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);;
-
-    border-radius: 7px;
-    border-color: transparent;
-    font-family: inherit;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 1.88;
-    text-align: center;
-    letter-spacing: 0.04em;
-    /* padding: 16px 32px; */
-    margin-top: 40px;
-    width: 205px;
+  border-radius: 7px;
+  border-color: transparent;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.88;
+  text-align: center;
+  letter-spacing: 0.04em;
+  /* padding: 16px 32px; */
+  margin-top: 40px;
+  width: 205px;
 }
 .btn_add:hover,
 .btn_addocus {
-    background: #466b89;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-    border-radius: 4px;
+  background: #466b89;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
 }
 
-.filter_contacts{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 70px;
-    margin-top:30px;
-    margin-bottom: 30px;
+.filter_contacts {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 70px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
-.filter_title{
-    color: #27557a;
+.filter_title {
+  color: #27557a;
 }
-.filter_input{
-    width: 250px;
-    height: 25px;
-    border: 3px double;
-    border-color:  #3f98f1;
+.filter_input {
+  width: 250px;
+  height: 25px;
+  border: 3px double;
+  border-color: #3f98f1;
 }
 
-.list_contacts li{
-    display:flex;
-    list-style: none;
+.list_contacts li {
+  display: flex;
+  list-style: none;
 }
 .name_contacts > div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-  }
-  
-  /* Стили для кнопок "Delete contact" и "Edit contact" */
-  .name_contacts button {
-    margin-left: 10px; /* Расстояние между кнопками */
-  }
-  .items_contact{
-    color: #27557a;
-    width: 200px;
-  }
-
-  .icon-cross_btn{
-    /* width: 40px;
-    height: 40px; */
-    fill: #a7234b;
-    border: none;
-    padding: 0;
-  }
-
-  .icon-pensil_btn{
-    fill: #0c5522;
-    border: none;
-    padding: 0;
-  }
-
-  .upate_contacts_form p{
-    font-size: large;
-    font-weight: 700;
-    color: #27557a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
 }
-.upate_contacts_form input{
-    width: 200px;
-    height: 30px;
-    border: 3px double;
-    border-color:  #3f98f1;
 
-    margin-bottom: 5px;
+/* Стили для кнопок "Delete contact" и "Edit contact" */
+.name_contacts button {
+  margin-left: 10px; /* Расстояние между кнопками */
+}
+.items_contact {
+  color: #27557a;
+  width: 200px;
+}
+
+.icon-cross_btn {
+  /* width: 40px;
+    height: 40px; */
+  fill: #a7234b;
+  border: none;
+  padding: 0;
+}
+
+.icon-pensil_btn {
+  fill: #0c5522;
+  border: none;
+  padding: 0;
+}
+
+.upate_contacts_form p {
+  font-size: large;
+  font-weight: 700;
+  color: #27557a;
+}
+.upate_contacts_form input {
+  width: 200px;
+  height: 30px;
+  border: 3px double;
+  border-color: #3f98f1;
+
+  margin-bottom: 5px;
 }

@@ -6,8 +6,7 @@ import { loginUserThunk } from 'redux/operations';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-const authentificated = useSelector(selectAuthentificated);
-
+  const authentificated = useSelector(selectAuthentificated);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -25,10 +24,10 @@ const authentificated = useSelector(selectAuthentificated);
     );
   };
 
-  if (authentificated) return <Navigate to="/contacts"/>;
+  if (authentificated) return <Navigate to="/contacts" />;
   return (
-    <div className='section_login'>
-      <h1 className='title_login'>Login Into Your Account</h1>
+    <div className="section_login">
+      <h1 className="title_login">Login Into Your Account</h1>
       <form className="form_login" onSubmit={handleSubmit}>
         <label className="title_form_login">
           <p>Email:</p>
@@ -40,7 +39,9 @@ const authentificated = useSelector(selectAuthentificated);
           <input name="userPassword" type="password" required minLength={7} />
         </label>
         <br />
-        <button className="btn_login" type="submit">Sign In</button>
+        <button className="btn_login" type="submit">
+          Sign In
+        </button>
       </form>
     </div>
   );
