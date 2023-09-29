@@ -82,6 +82,10 @@
   border: 3px double;
   border-color: #3f98f1;
 }
+.list_contacts{
+  margin-bottom: 80px;
+  padding-left: 0;
+}
 
 .list_contacts li {
   display: flex;
@@ -91,7 +95,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
+  gap: 30px;
 }
 
 /* Стили для кнопок "Delete contact" и "Edit contact" */

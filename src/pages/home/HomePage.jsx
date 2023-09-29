@@ -9,7 +9,7 @@ const HomePage = () => {
           Welcome to Phonebook app. <br />
           It's here to help you manage your contacts easily and securely.
         </h1>
-        <a href="/register">
+        <a href="/goit-react-hw-08-phonebook/register">
           {' '}
           <button type="button" className="homepage_btn">
             Register Now

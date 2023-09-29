@@ -1,6 +1,6 @@
 import StyledNavLink from './App.styled'
 import { lazy, Suspense ,useEffect } from 'react';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import Loader from '../Loader/Loader'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthentificated, selectToken } from 'redux/authReducer';
@@ -35,7 +35,7 @@ export const App = () => {
   // };
 
   return (
-    <Router>
+    <>
     <div>
       <header className="header_app">
         <nav className='nav_app'>
@@ -62,19 +62,18 @@ export const App = () => {
               <Route 
               path ="/contacts" 
               element={
-              <PrivateRoute redirectTo='/login'>
-                <ContactsPage/>
-              </PrivateRoute>
-                 }
+              <PrivateRoute redirectTo='/login' element={<ContactsPage/>}  />  }
+                       
               />
               <Route path ="/login" element={<LoginPage/>}/>
               <Route path ="/register" element={<RegisterPage/>}/>
+              <Route path ="*" element= {<div>Not found</div>}/>
             </Routes>
           </Suspense>
       </main>
     </div>
    
-    </Router>
+    </>
   );
 
 };
