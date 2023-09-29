@@ -52,6 +52,7 @@ const Contacts = () => {
       return alert(`Contact with name ${name} already exists!`);
 
     dispatch(addContactThunk({ name, number }));
+    form.reset();
   };
 
   const handleEditContact = contact => {
